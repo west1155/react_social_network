@@ -1,0 +1,18 @@
+.nav {
+    grid-area: nav;
+    background-color: gainsboro;
+    text-align: center;
+    padding: 10px;
+}
+
+.nav .item {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+
+}
+
+.nav a:hover {
+    color: burlywood;
+    font-weight: bold;
+}

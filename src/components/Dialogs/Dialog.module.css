@@ -1,0 +1,13 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.text_area {
+    width: 189px;
+    height: 141px;
+}
+
+.button {
+    width: 189px;
+}
