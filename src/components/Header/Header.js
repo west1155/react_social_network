@@ -1,8 +1,14 @@
 import React from "react";
 import s from './Header.module.css';
 
-const Header = () => {
-    return(
+
+const Header = (props) => {
+
+    function logout () {
+        props.logout()
+
+    }
+    return (
         <header className={s.header}>
             <a href="#default" className={s.logo}>CompanyLogo</a>
             <div className={s.headerRight}>
@@ -10,8 +16,16 @@ const Header = () => {
                 <a href="#contact">Contact</a>
                 <a href="#about">About</a>
             </div>
+            <div>
+                {(props.isAuth) ? props.login : null }
+                --->
+                <button onClick={logout}>Logout</button>
+
+            </div>
+
+
         </header>
-    );
+);
 
 }
 

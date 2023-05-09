@@ -1,44 +1,53 @@
+import s from "./Users.module.css";
 import React from "react";
-import s from './Users.module.css'
+import {NavLink} from "react-router-dom";
 
 
 const Users = (props) => {
 
-    let users = props.users
-    window.users = users
 
-    let names = props.users.map (n => <div className={s.profile_page} key={n.id}>
-        <span>
-            <div>
-                <img className={s.profile_photo}
-                     src="https://www.shutterstock.com/image-vector/donkey-shrek-icon-funny-cartoon-600w-2156476755.jpg"
-                alt="logo">
-                </img>
-            </div>
-            <div>
-                {
-                    n.followed ?
-                        <button onClick={ () => {props.setUnfollow(n.id)} }> Unfollow </button> :
-                        <button onClick={ () => {props.setFollow(n.id)} }> Follow </button>
-                }
-            </div>
-        </span>
-        <span>
-            <span>
-                <div>{n.fullName}</div>
-                 <div>{n.status}</div>
-            </span>
-            <span>
-                <div>{n.location.country}</div>
-                <div>{n.location.city}</div>
+    let totalPages = Math.ceil(props.totalUsers / props.pageSize);
+    let pages = []
+    for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+    }
 
-            </span>
-        </span>
-    </div> )
+
+
 
     return <div>
-        {names}
+        <div>
+            {pages.map((p => <span className={p === props.currentPage && s.selected}
+                                   onClick={(e) => {
+                                       props.onPageChange(p)
+                                   }}>{p}</span>))}
+        </div>
+        {props.users.map(u => <div key={u.id}>
+            <div>
+                <NavLink to={"/profile"}>
+                    <img className={s.profile_photo}
+                         src="https://www.shutterstock.com/image-vector/donkey-shrek-icon-funny-cartoon-600w-2156476755.jpg"
+                         alt="logo">
+                    </img>
+                </NavLink>
+            </div>
+            <div>
+                {u.followed ?
+                    <button onClick={() => {
+                        props.setUnfollow(u.id)
+                    }}>Unfollow</button> :
+
+                    <button  onClick={() => {
+                        props.setFollow(u.id)
+                    }}> Follow </button>}
+            </div>
+            <span>
+                <div>{u.name}</div>
+                 <div>{u.status}</div>
+            </span>
+        </div>)}
     </div>
+
 
 }
 

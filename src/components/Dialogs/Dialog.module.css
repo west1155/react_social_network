@@ -1,13 +1,9 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    text-align: left;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-.text_area {
-    width: 189px;
-    height: 141px;
-}
-
-.button {
-    width: 189px;
-}

@@ -15,4 +15,4 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-const NavBarContainer = connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default connect(mapStateToProps, null)(NavBar)

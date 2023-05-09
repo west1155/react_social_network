@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "name": "jimmy",
+      "id": 1,
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "billy",
+      "id": 2,
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "willy",
+      "id": 3,
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "amith",
+      "id": 4,
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "suse",
+      "id": 5,
+      "status": null,
+      "followed": false
+    },
+    {
+      "name": "muse",
+      "id": 6,
+      "status": null,
+      "followed": false
+    }
+  ],
+  "totalcount": 54,
+  "error": null
+
+}

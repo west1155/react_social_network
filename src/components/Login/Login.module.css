@@ -1,0 +1,22 @@
+
+
+.text_area {
+    msrgin-top: 0.5rem;
+}
+
+.error {
+    color:red;
+}
+
+
+p1 {
+    margin: 0px;
+    margin-bottom: 0.25rem;
+    color: red;
+    font-size: 0.5rem;
+}
+
+button1
+{
+    width: 100%
+}
