@@ -13,7 +13,7 @@ import {initApp} from "./components/redux/app-reducer";
 class App extends React.Component {
 
     render() {
-        if (!this.props.initialized) {<div>LOADING</div>}
+        //if (!this.props.initialized) {<div>LOADING</div>}
 
 
         return (

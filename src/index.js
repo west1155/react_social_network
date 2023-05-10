@@ -6,6 +6,8 @@ import React from "react";
 import App from "./App";
 import {Provider} from "react-redux";
 
+/*setInterval(() => {store.dispatch({type: "test"})}, 1000)*/
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 export let rerenderEntireTree = (state) => {

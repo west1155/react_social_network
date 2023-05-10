@@ -6,6 +6,7 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_USERS = 'SET-TOTAL-USERS'
 const SET_FETCHING = 'SET-FETCHING'
+const test = 'test'
 
 let initialize = {
     users: [],
@@ -13,11 +14,18 @@ let initialize = {
     totalUsers: 21,
     currentPage: 1,
     isFetching: true,
+    fake: 10
 }
 
 
 const usersReducer = (state = initialize, action) => {
     switch (action.type) {
+
+        case test:
+            return {
+                ...state,
+                fake: state.fake
+            }
         case FOLLOW:
             return {
                 ...state,

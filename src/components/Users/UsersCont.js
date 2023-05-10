@@ -8,6 +8,12 @@ import React from "react";
 import Users from "./Users";
 import {connect} from "react-redux";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getPageSize,
+    getTotalUsers,
+    getUsersSuperSelector
+} from "../redux/users-selectors";
 
 
 class UserApiContainer extends React.Component {
@@ -24,6 +30,7 @@ class UserApiContainer extends React.Component {
 
     render() {
         return <>
+            {console.log("USERS")}
             <Users pageSize={this.props.pageSize}
                    totalUsers={this.props.totalCount}
                    currentPage={this.props.currentPage}
@@ -38,12 +45,12 @@ class UserApiContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+    console.log("MapStateToProps")
     return {
-        isAuth: state.auth.isAuth,
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalCount: state.usersPage.totalUsers,
-        currentPage: state.usersPage.currentPage,
+        users: getUsersSuperSelector(state),
+        pageSize: getPageSize(state),
+        totalCount: getTotalUsers(state),
+        currentPage: getCurrentPage(state),
     }
 }
 
