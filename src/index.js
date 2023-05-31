@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from '../src/components/redux/redux-store'
+import store from './components/redux/redux-store'
 import React from "react";
-import App from "./App";
+import App from "./components/App/App.jsx";
 import {Provider} from "react-redux";
 
 /*setInterval(() => {store.dispatch({type: "test"})}, 1000)*/

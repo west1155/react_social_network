@@ -1,4 +1,6 @@
 import {UserAPI} from "../api/UserAPI";
+import {UserType} from "../../types/types";
+import {number} from "yup";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -9,12 +11,12 @@ const SET_FETCHING = 'SET-FETCHING'
 const test = 'test'
 
 let initialize = {
-    users: [],
-    pageSize: 5,
-    totalUsers: 21,
-    currentPage: 1,
-    isFetching: true,
-    fake: 10
+    users: [] as Array<UserType>,
+    pageSize: 5 as number,
+    totalUsers: 21 as number,
+    currentPage: 1 as number,
+    isFetching: true as boolean,
+    fake: 10 as number
 }
 
 
@@ -29,7 +31,7 @@ const usersReducer = (state = initialize, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
+                users: state.users.map((u) => {
                     if (u.id === action.userId) {
                         u.followed = true;
                         return {...u}
@@ -72,12 +74,49 @@ const usersReducer = (state = initialize, action) => {
     }
 }
 
-export const followAction = (userId) => ({type: FOLLOW, userId});
-export const unfollowAction = (userId) => ({type: UNFOLLOW, userId});
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS, totalUsers});
-export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
-export const setIsFetching = (isFetching) => ({type: SET_FETCHING, isFetching});
+
+type followActionType = {
+    type: typeof FOLLOW
+    userId: number
+
+}
+
+export const followAction = (userId: number): followActionType => ({type: FOLLOW, userId});
+
+type unfollowActionType = {
+    type: typeof UNFOLLOW
+    userId: number
+}
+export const unfollowAction = (userId: number): unfollowActionType => ({type: UNFOLLOW, userId});
+
+type setUsersActionType = {
+    type: typeof SET_USERS
+    users: Array<UserType>
+}
+
+export const setUsers = (users: Array<UserType>): setUsersActionType => ({type: SET_USERS, users});
+
+type setTotalUsersActionType = {
+    type: typeof SET_TOTAL_USERS
+    totalUsers: number
+}
+
+export const setTotalUsers = (totalUsers: number): setTotalUsersActionType => ({type: SET_TOTAL_USERS, totalUsers});
+
+
+type setCurrentPageActionType = {
+    type: typeof SET_CURRENT_PAGE
+    page: number
+}
+
+export const setCurrentPage = (page: number): setCurrentPageActionType => ({type: SET_CURRENT_PAGE, page});
+
+
+type setIsFetchingActionType = {
+    type: typeof SET_FETCHING
+    isFetching: boolean
+}
+export const setIsFetching = (isFetching: boolean): setIsFetchingActionType => ({type: SET_FETCHING, isFetching});
 
 
 export const getUsersThunkCreator = (currentPage, pageSize) => {

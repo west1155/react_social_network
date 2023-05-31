@@ -1,14 +1,14 @@
 import './App.css';
 import React from 'react';
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "../NavBar/NavBar.js";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import DialogContainer from "./components/Dialogs/DialogContainer";
-import UsersContainer from "./components/Users/UsersCont";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import DialogContainer from "../Dialogs/DialogContainer.js";
+import UsersContainer from "../Users/UsersCont.js";
+import ProfileContainer from "../Profile/ProfileContainer.js";
+import HeaderContainer from "../Header/HeaderContainer.js";
+import Login from "../Login/Login.js";
 import {connect} from "react-redux";
-import {initApp} from "./components/redux/app-reducer";
+import {initApp} from "../redux/app-reducer.ts";
 
 class App extends React.Component {
 

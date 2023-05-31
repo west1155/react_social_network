@@ -3,14 +3,21 @@ import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
-let initialize = {
+export type InitialStateType = {   // Type for state
+    login: string | null
+    email: string | null
+    id: number | null
+    isAuth: boolean
+}
+
+let initialize: InitialStateType = {
     login: null,
     email: null,
     id: null,
     isAuth: false,
 }
 
-const authReducer = (state = initialize, action) => {
+const authReducer = (state:InitialStateType = initialize, action): InitialStateType => {
 
     switch (action.type) {
 
@@ -28,9 +35,23 @@ const authReducer = (state = initialize, action) => {
     }
 }
 
-export const setUserData = (userId, login, email) => ({type: SET_USER_DATA, data: {userId, login, email}})
 
-export const getAuthUserData = () => (dispatch) => {
+type setUserData = {
+    userId: number
+    login: string
+    email: string
+}
+
+
+type setUserDataActionType = {
+    type: typeof SET_USER_DATA
+    data: setUserData
+}
+
+
+export const setUserData = (userId, login, email): setUserDataActionType => ({type: SET_USER_DATA, data: {userId, login, email}})
+
+export const getAuthUserData = () => (dispatch: any) => {
     AuthAPI.me()
         .then(r => {
             if (r.data.resultCode === 0)
@@ -39,7 +60,7 @@ export const getAuthUserData = () => (dispatch) => {
 }
 
 
-export const login = (email, password, rememberMe = false) => {
+export const login = (email: string, password: string, rememberMe:boolean = false) => {
     return (dispatch) => {
         AuthAPI.login(email, password, rememberMe)
             .then(r => {
@@ -52,7 +73,7 @@ export const login = (email, password, rememberMe = false) => {
     }
 }
 
-export const logout = () => (dispatch) => {
+export const logout = () => (dispatch: any) => {
     AuthAPI.logOut()
         .then(r => {
             if (r.data.resultCode === 0) {

@@ -1,7 +1,11 @@
 import {ProfileAPI, UserAPI} from "../api/UserAPI";
+import {PostType, ProfilePageType, ProfileType} from "../../types/types";
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS'
+
+
+
 
 let initialize = {
     posts: [
@@ -9,12 +13,12 @@ let initialize = {
         {id: 2, message: 'It\'s my first post', likesCount: 11},
         {id: 3, message: 'Blabla', likesCount: 11},
         {id: 4, message: 'Dada', likesCount: 11}
-    ],
-    profile: null,
+    ] as Array<PostType>,
+    profile: null as ProfileType | null,
     status: ""
 }
 
-const profileReducer = (state = initialize, action) => {
+const profileReducer = (state = initialize, action: any): ProfilePageType => {
 
     switch (action.type) {
 
@@ -46,14 +50,27 @@ const profileReducer = (state = initialize, action) => {
 
 }
 
+type addPostActionCreatorType = {
+    type: typeof ADD_POST,
+    postMessage: string
+}
+export const addPostActionCreator = (postMessage): addPostActionCreatorType  => ({type: ADD_POST, postMessage});
 
-export const addPostActionCreator = (postMessage) => ({type: ADD_POST, postMessage});
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setUserStatus = (status) => ({type: SET_STATUS, status})
+type setUserProfileType = {
+    type: typeof SET_USER_PROFILE,
+    profile: ProfileType
+}
+export const setUserProfile = (profile): setUserProfileType => ({type: SET_USER_PROFILE, profile})
+
+type setUserStatusType = {
+    type: typeof SET_STATUS,
+    status: string
+}
+export const setUserStatus = (status): setUserStatusType => ({type: SET_STATUS, status})
 
 
-export const getUserProfile = (userId) =>
-    (dispatch) => {
+export const getUserProfile = (userId: number) =>
+    (dispatch: any) => {
         UserAPI.getProfile(userId)
             .then(response => {
                 dispatch(setUserProfile(response.data))
@@ -62,7 +79,7 @@ export const getUserProfile = (userId) =>
 
 
 
-export const getUserStatus = (userId) => (dispatch) => {
+export const getUserStatus = (userId: number) => (dispatch: any) => {
         ProfileAPI.getStatus(userId)
             .then(response => {
                 dispatch(setUserStatus(response.data))
@@ -70,7 +87,7 @@ export const getUserStatus = (userId) => (dispatch) => {
     }
 
 
-export const updateUserStatus = (status) => (dispatch) => {
+export const updateUserStatus = (status: string) => (dispatch: any) => {
         ProfileAPI.updateStatus(status)
             .then(response => {
                 if (response.data.resultCode === 0) {

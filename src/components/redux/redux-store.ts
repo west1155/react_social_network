@@ -5,8 +5,11 @@ import usersReducer from "./users-reducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from 'redux-form'
 import authReducer from "./auth";
-import appReducer from "./app-reducer";
+import appReducer from "./app-reducer.ts";
 
+
+type reducersType = typeof reducers
+export type AppStateType = ReturnType<reducersType>
 let reducers = combineReducers({
     usersPage: usersReducer,
     dialogsPage: dialogReducer,
