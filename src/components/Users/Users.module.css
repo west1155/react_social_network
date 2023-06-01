@@ -6,7 +6,43 @@
     width: 100px
 }
 
-.selected {
-    font: bold;
-    font-size: 30px;
+
+/* styles.css */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin-right: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f2f2f2;
+}
+
+.pagination .active {
+    background-color: #333;
+    color: #fff;
+}
+
+.pagination .break {
+    display: none;
+}
+
+.pagination .previous,
+.pagination .next {
+    font-weight: bold;
+}
+
+.pagination .maker {
+    display: none;
 }

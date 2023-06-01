@@ -2,6 +2,8 @@
   "compilerOptions": {
     "moduleResolution": "node",
     // Other compiler options...
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react"
   },
   // Other configuration options...
 }

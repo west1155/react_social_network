@@ -9,10 +9,6 @@ let initialize : InitialStateType = {
     initialized: false
 }
 
-type INIT_SUCCESS_TYPE = {
-    type: typeof INIT_SUCCESS
-}
-
 
 const appReducer = (state = initialize, action: string): InitialStateType => {
     switch (action.type ) {
