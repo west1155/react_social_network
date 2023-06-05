@@ -18,17 +18,26 @@ const Users: React.FC<PropsType> = (props) => {
 
 
     // Function to handle page change
-    const handlePageChange = (selectedPage) => {
-        setCurrentPage(selectedPage.selected);
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber.selected);
     };
 
-    let data = props.users;
-    let itemsPerPage = 10
+    let data: Array<UserType> = props.users;
+    let itemsPerPage: number = 10
+
+    const pagesToShow: number = 5; // Number of pages to show before and after the current page
+    const startPage: number = Math.max(1, currentPage - pagesToShow);
+    const endPage: number = Math.min(10, currentPage + pagesToShow);
+    const pageNumbers: Array<number> = [];
+    for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+    }
 
 
-    let totalPages = Math.ceil(data.length / itemsPerPage);
-    const offset = currentPage * itemsPerPage;
-    const currentPageData = data.slice(offset, offset + itemsPerPage);
+
+    let totalPages: number = Math.ceil(data.length / itemsPerPage);
+    const offset: number = currentPage * itemsPerPage;
+    const currentPageData: Array<UserType> = data.slice(offset, offset + itemsPerPage);
 
 
 
@@ -40,13 +49,12 @@ const Users: React.FC<PropsType> = (props) => {
                 nextLabel={'Next'}
                 nextClassName={s.pagination.next}
                 pageCount={totalPages}
-                marginPagesDisplayed={200}
+                marginPagesDisplayed={5}
                 pageRangeDisplayed={5}
                 containerClassName={s.pagination}
-                activeLinkClassName={s.pagination.active}
+                activeLinkClassName={s.pagination.a}
                 breakClassName={s.pagination.break}
                 onPageChange={handlePageChange}
-                onPageChange={({ selected }) => setCurrentPage(selected)}
                 makerClassName={s.pagination.maker}
 
             />

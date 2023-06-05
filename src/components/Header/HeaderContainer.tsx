@@ -4,17 +4,17 @@ import {connect} from "react-redux";
 import {getAuthUserData, logout} from "../redux/auth";
 
 
-class HeaderContainer extends React.Component {
+class HeaderContainer extends React.Component<React, React> {
     componentDidMount() {
         this.props.getAuthUserData();
     }
 
     render() {
-        return <div><Header isAuth={this.props.isAuth}
-                            login={this.props.login}
-                            logout={this.props.logout}
-                            withAuthRedirect={this.props.withAuthRedirect}
-        /></div>
+        return (
+            <div>
+                <Header/>
+            </div>
+        )
     }
 }
 

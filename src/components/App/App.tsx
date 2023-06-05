@@ -1,16 +1,16 @@
 import './App.css';
 import React from 'react';
-import NavBar from "../NavBar/NavBar.js";
+import NavBar from "../NavBar/NavBar.tsx";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import DialogContainer from "../Dialogs/DialogContainer.js";
-import UsersContainer from "../Users/UsersCont.js";
-import ProfileContainer from "../Profile/ProfileContainer.js";
-import HeaderContainer from "../Header/HeaderContainer.js";
-import Login from "../Login/Login.js";
+import DialogContainer from "../Dialogs/DialogContainer.ts";
+import UsersContainer from "../Users/UsersCont.tsx";
+import ProfileContainer from "../Profile/ProfileContainer.tsx";
+import HeaderContainer from "../Header/HeaderContainer.tsx";
+import Login from "../Login/Login.tsx";
 import {connect} from "react-redux";
 import {initApp} from "../redux/app-reducer.ts";
 
-class App extends React.Component {
+class App extends React.Component<React, React> {
 
     render() {
         //if (!this.props.initialized) {<div>LOADING</div>}

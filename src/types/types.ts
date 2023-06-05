@@ -45,3 +45,44 @@ export type UserType = {
     }
     followed: boolean
 }
+
+
+export type MapStatePropsType = {
+    users: Array<UserType>
+
+}
+
+export type MapDispatchPropsType = {
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    getUsers: () => void
+}
+
+
+export type MyMeReturnTypes = {
+    data: {
+        id: number
+        email: string
+        login: string
+    }
+    resultCode: number
+    messages: Array<string>
+
+
+}
+
+
+export type LoginReturnTypes = {
+    data: {
+        userId: number
+    }
+    resultCode: number
+    messages: Array<string>
+}
+
+
+export type LogoutReturnTypes = {
+    data: {}
+    resultCode: number
+    messages: Array<string>
+}

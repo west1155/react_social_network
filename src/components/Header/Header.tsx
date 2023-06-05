@@ -19,7 +19,6 @@ const Header = (props) => {
             </div>
             <div>
                 {(props.isAuth) ? props.login : null }
-                --->
                 <button onClick={logout}>Logout</button>
 
             </div>

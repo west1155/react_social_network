@@ -8,8 +8,8 @@ import authReducer from "./auth";
 import appReducer from "./app-reducer.ts";
 
 
-type reducersType = typeof reducers
-export type AppStateType = ReturnType<reducersType>
+export type reducersType = typeof reducers
+
 let reducers = combineReducers({
     usersPage: usersReducer,
     dialogsPage: dialogReducer,
@@ -20,6 +20,8 @@ let reducers = combineReducers({
 })
 
 
+export type AppStateType = ReturnType<reducersType>
+
 let store = createStore(reducers, applyMiddleware(thunk));
-window.store = store
+
 export default store;

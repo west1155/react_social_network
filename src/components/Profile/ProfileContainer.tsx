@@ -8,7 +8,7 @@ import withRouter from "../../hoc/withRouter";
 
 withRouter()
 
-class ProfileContainer extends React.Component {
+class ProfileContainer extends React.Component<any, any> {
 
 
     componentDidMount() {
