@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import s from './Profile.module.css'
 import Preloader from "../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";

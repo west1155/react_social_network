@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 
 const ProfileStatusWithHooks = (props) => {
-    // editMode is a input - span switch, setEditMode is a func which switches
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
 
