@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import s from './Dialog.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";

@@ -5,7 +5,7 @@ import usersReducer from "./users-reducer";
 import thunk from "redux-thunk";
 import {reducer as formReducer} from 'redux-form'
 import authReducer from "./auth";
-import appReducer from "./app-reducer.ts";
+import appReducer from "./app-reducer";
 
 
 export type reducersType = typeof reducers

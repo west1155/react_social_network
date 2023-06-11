@@ -13,8 +13,10 @@ let initialize = {
     totalUsers: 201 as number,
     currentPage: 1 as number,
     isFetching: true as boolean,
-    fake: 10 as number
 }
+
+
+export type initialStateType = typeof initialize;
 
 
 const usersReducer = (state = initialize, action) => {
@@ -64,6 +66,9 @@ type followActionType = {
 
 }
 
+
+
+
 export const followAction = (userId: number): followActionType => ({type: FOLLOW, userId});
 
 type unfollowActionType = {
@@ -89,13 +94,13 @@ export const setIsFetching = (isFetching: boolean): setIsFetchingActionType => (
 export const getUsers = () => {
     return (dispatch) => {
         UserAPI.getUsers().then(data => {
-            dispatch(setUsers(data.items))
+            // @ts-ignore
+            dispatch(setUsers(data.items)); // dispatch action  setUsers
         })
     }
 }
 
-
-export const follow = (userId: any) => {
+export const follow = (userId: number) => {
     return (dispatch) => {
         UserAPI.setFollow(userId).then(r => {
             dispatch(followAction(userId))

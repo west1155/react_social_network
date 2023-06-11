@@ -2,11 +2,6 @@ import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getUserProfile, getUserStatus, updateUserStatus} from "../redux/profile-reducer";
-import {compose} from "redux";
-import withRouter from "../../hoc/withRouter";
-
-
-withRouter()
 
 class ProfileContainer extends React.Component<any, any> {
 
@@ -41,8 +36,9 @@ let mapStateToProps = (state) => ({
 
 
 
-export default compose(connect(mapStateToProps, {getProfile: getUserProfile, getUserStatus, updateUserStatus}),
-    withRouter)(ProfileContainer)
+// @ts-ignore
+
+export default connect(mapStateToProps, {getProfile: getUserProfile, getUserStatus, updateUserStatus})(ProfileContainer)
 
 
 

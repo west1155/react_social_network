@@ -29,7 +29,6 @@ export const UserAPI = {
 
 
     getProfile(userId: number) {
-        console.warn("Outside method shopuld be used")
         return ProfileAPI.getProfile(userId)
     }
 

@@ -1,17 +1,26 @@
+// @ts-ignore
 import s from "./Users.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 import {UserType} from "../../types/types";
+import {useDispatch, useSelector} from "react-redux";
+import {getUsersSuperSelector} from "../redux/users-selectors";
+import {follow, getUsers, unFollow} from "../redux/users-reducer";
+
+const Users = () =>  {
 
 
-type PropsType = {
-    users: Array<UserType>
-    setFollow: (userId: number) => void
-    setUnfollow: (userId: number) => void
-}
 
-const Users: React.FC<PropsType> = (props) => {
+    const users = useSelector(getUsersSuperSelector);
+    const setFollow = useSelector(follow);
+    const setUnfollow = useSelector(unFollow)
+
+    const dispatch: any = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUsers());
+    }, [dispatch]);
 
 
     const [currentPage, setCurrentPage] = useState(0);
@@ -22,7 +31,7 @@ const Users: React.FC<PropsType> = (props) => {
         setCurrentPage(pageNumber.selected);
     };
 
-    let data: Array<UserType> = props.users;
+    let data: any = users;
     let itemsPerPage: number = 10
 
     const pagesToShow: number = 5; // Number of pages to show before and after the current page
@@ -49,13 +58,11 @@ const Users: React.FC<PropsType> = (props) => {
                 nextLabel={'Next'}
                 nextClassName={s.pagination.next}
                 pageCount={totalPages}
-                marginPagesDisplayed={5}
-                pageRangeDisplayed={5}
+                marginPagesDisplayed={1}
+                pageRangeDisplayed={2}
                 containerClassName={s.pagination}
                 activeLinkClassName={s.pagination.a}
-                breakClassName={s.pagination.break}
                 onPageChange={handlePageChange}
-                makerClassName={s.pagination.maker}
 
             />
         </div>
@@ -72,11 +79,11 @@ const Users: React.FC<PropsType> = (props) => {
             <div>
                 {u.followed ?
                     <button onClick={() => {
-                        props.setUnfollow(u.id)
+                        setUnfollow(u.id)
                     }}>Unfollow</button> :
 
                     <button onClick={() => {
-                        props.setFollow(u.id)
+                        setFollow(u.id)
                     }}> Follow </button>}
             </div>
             <span>
